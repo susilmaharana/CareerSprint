@@ -19,13 +19,13 @@
     {
       "route": "/api/*",
       "allowedRoles": [
-        "authenticated"
+        "owner"
       ]
     },
     {
       "route": "/*",
       "allowedRoles": [
-        "authenticated"
+        "owner"
       ]
     }
   ],
