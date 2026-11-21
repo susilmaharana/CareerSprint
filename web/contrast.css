@@ -1,0 +1,22 @@
+/* Darker secondary text for readable small labels across the existing theme. */
+.page-heading .eyebrow,
+.modal-head .eyebrow { color: #5146b9; }
+.hero-kicker,
+.hero p,
+.hero-mini { color: #fff; }
+.stat-value small,
+.session-sub,
+td:first-child small,
+.table-footer,
+.footer,
+.small-pill,
+.library-stat,
+.problem-meta,
+.review-item small,
+.review-empty,
+.pattern-summary { color: #536079; }
+.small-pill { color: #5147c6; }
+.week-summary { color: #5147c6; }
+.footer button,
+.text-button,
+td .edit-link { color: #5147c6; }

@@ -1,0 +1,6 @@
+**/local.settings.json
+**/bin/
+**/obj/
+.vs/
+node_modules/
+.env
