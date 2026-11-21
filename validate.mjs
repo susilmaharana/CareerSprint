@@ -6,8 +6,23 @@ assert.equal(new Set(seed.map(x=>x.id)).size,96,'Session IDs must be unique');
 assert.ok(seed.every(x=>/^\d{4}-\d{2}-\d{2}$/.test(x.date)));
 const config=JSON.parse(fs.readFileSync('./web/staticwebapp.config.json','utf8'));
 assert.equal(config.platform.apiRuntime,'dotnet-isolated:10.0');
-assert.ok(config.routes.some(x=>x.route==='/api/*'&&x.allowedRoles.includes('authenticated')));
-assert.ok(config.routes.some(x=>x.route==='/*'&&x.allowedRoles.includes('authenticated')));
+assert.ok(
+  config.routes.some(
+    x => x.route === '/api/*' &&
+         x.allowedRoles.includes('owner') &&
+         !x.allowedRoles.includes('authenticated')
+  ),
+  'API must be restricted to owner'
+);
+
+assert.ok(
+  config.routes.some(
+    x => x.route === '/*' &&
+         x.allowedRoles.includes('owner') &&
+         !x.allowedRoles.includes('authenticated')
+  ),
+  'Website must be restricted to owner'
+);
 assert.equal(seed.filter(x=>x.type==='System design').length,12);
 assert.equal(seed.filter(x=>x.type==='Coding + concept' && x.resourceUrl?.startsWith('https://www.hackerrank.com/challenges/')).length,60);
 assert.ok(seed.filter(x=>x.type==='System design').every(x=>x.resourceUrl?.startsWith('https://learn.microsoft.com/')));
